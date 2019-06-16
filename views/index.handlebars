@@ -1,0 +1,47 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Burger Builder</a>
+</nav>
+
+<div class="container">
+  <div class="jumbotron bg-transparent mt-4">
+    <div class="row">
+      <div class="col">
+        <h1 class="display-4">Hello, burger enthusiast!</h1>
+        <p class="lead">Welcome to your one-stop shop for creating and eating fake burgers.</p>
+      </div>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-4">Uneaten</h1>
+        <ul class="list-group">
+          <li class="list-group-item p-3">
+            <form class="needs-validation" novalidate>
+              <div class="input-group">
+                <input type="text" class="form-control" id="nameInput" aria-describedby="nameHelp"
+                  placeholder="Enter name" name="name" required>
+                <div class="invalid-feedback">
+                  Please choose a vaild name.
+                </div>
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-success" id="newBurgerBtn">Create New Burger</button>
+                </div>
+              </div>
+            </form>
+          </li>
+          {{#each uneaten}}
+          {{> burgers/burger-block}}
+          {{/each}}
+        </ul>
+      </div>
+      <div class="col">
+        <h1 class="text-center mb-4">Eaten</h1>
+        <ul class="list-group">
+          {{#each eaten}}
+          {{> burgers/burger-block}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
