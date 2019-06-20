@@ -6,11 +6,11 @@ const db = require('../models')
 const router = express.Router()
 
 
-function createRoutes(model, baseUrl, includeModel) {
+function createRoutes(model, baseUrl, includeModels) {
 
   router.get(baseUrl, function (request, response) {
     let options = {}
-    if (includeModel) options.include = [includeModel]
+    if (includeModels) options.include = includeModels
     model.findAll(options)
       .then(data => {
         response.json(data)
@@ -64,8 +64,8 @@ function createRoutes(model, baseUrl, includeModel) {
 }
 
 
-createRoutes(db.Customer, '/api/customers', db.Burger)
-createRoutes(db.Burger, '/api/burgers', db.Customer)
+createRoutes(db.Customer, '/api/customers', [db.Burger])
+createRoutes(db.Burger, '/api/burgers', [db.Customer])
 
 
 module.exports = router
