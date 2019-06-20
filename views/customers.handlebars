@@ -1,0 +1,45 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Burger Builder</a>
+</nav>
+
+<div class="container">
+  <div class="row mt-4">
+    <div class="col">
+      <h1>Customers</h1>
+      <div class="row">
+        <div class="col p-3">
+          <form class="needs-validation" novalidate>
+              <div class="input-group">
+                <input type="text" class="form-control" id="nameInput" aria-describedby="nameHelp"
+                  placeholder="Enter name" name="name" required>
+                <div class="invalid-feedback">
+                  Please choose a vaild name.
+                </div>
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-success" id="newCustomerBtn">Create New Customer</button>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th># of Burgers</th>
+            <!--<th>See Customer's Burgers</th>-->
+            <!--<th>New Burger</th>-->
+            <th>Delete Customer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each customers}}
+          {{> customers/customer-block}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/customers.js"></script>

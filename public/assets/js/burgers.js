@@ -1,5 +1,20 @@
 $(document).ready(function () {
 
+  $.get('/api/customers')
+    .done(customers => {
+      customers.forEach(customer => {
+        let devourItem = $('<a>')
+          .addClass('dropdown-item devour-btn')
+          .attr('href', '#')
+          .data('customer-id', customer.id)
+          .text(customer.name)
+        $('.customer-options').append(devourItem)
+      });
+    })
+    .fail(error => {
+      throw error
+    })
+
   $('#newBurgerBtn').on('click', event => {
     event.preventDefault()
     let data = {
@@ -15,9 +30,11 @@ $(document).ready(function () {
   })
 
   $(document.body).on('click', '.devour-btn', function () {
-    let burgerId = $(this).data('id')
+    let customerId = $(this).data('customer-id')
+    let burgerId = $(this).parent().data('burger-id')
     let data = {
-      devoured: true
+      devoured: true,
+      CustomerId: customerId
     }
     $.ajax({
         url: `/api/burgers/${burgerId}`,

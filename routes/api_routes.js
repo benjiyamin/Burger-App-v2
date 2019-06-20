@@ -33,6 +33,8 @@ function createRoutes(model, baseUrl, includeModels) {
 
 
   router.put(`${baseUrl}/:id`, function (request, response) {
+    console.log(request.body.devoured)
+    console.log(request.body.CustomerId)
     model.update(request.body, {
         where: {
           id: request.params.id
