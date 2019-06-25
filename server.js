@@ -27,7 +27,7 @@ app.use(htmlRoutes)
 
 
 db.sequelize.sync({
-    force: true
+    force: false
   })
   .then(function () {
     const PORT = process.env.PORT || 8080
