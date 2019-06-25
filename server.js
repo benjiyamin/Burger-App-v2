@@ -30,7 +30,7 @@ db.sequelize.sync({
     force: false
   })
   .then(function () {
-    const PORT = process.env.PORT || 3000
+    const PORT = process.env.PORT || 8080
     app.listen(PORT, function () {
       console.log(`App now listening at PORT ${PORT}`);
     })

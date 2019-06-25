@@ -32,12 +32,13 @@ function createRoutes(model, baseUrl, includeModels) {
   })
 
 
-  router.put(`${baseUrl}/:id`, function (request, response) {
-    console.log(request.body.devoured)
-    console.log(request.body.CustomerId)
-    model.update(request.body, {
+  router.put(`${baseUrl}`, function (request, response) {
+    model.update({
+        id: request.body.pk,
+        name: request.body.value
+      }, {
         where: {
-          id: request.params.id
+          id: request.body.pk
         }
       })
       .then(data => {

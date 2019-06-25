@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+  $.fn.editable.defaults.ajaxOptions = {type: "PUT"}
+  $('#name').editable()
+
   
   $('#newCustomerBtn').on('click', event => {
     event.preventDefault()
