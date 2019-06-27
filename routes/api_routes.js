@@ -33,12 +33,9 @@ function createRoutes(model, baseUrl, includeModels) {
 
 
   router.put(`${baseUrl}`, function (request, response) {
-    model.update({
-        id: request.body.pk,
-        name: request.body.value
-      }, {
+    model.update(request.body, {
         where: {
-          id: request.body.pk
+          id: request.body.id
         }
       })
       .then(data => {

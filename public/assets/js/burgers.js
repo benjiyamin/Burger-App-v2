@@ -33,11 +33,12 @@ $(document).ready(function () {
     let customerId = $(this).data('customer-id')
     let burgerId = $(this).parent().data('burger-id')
     let data = {
+      id: burgerId,
       devoured: true,
       CustomerId: customerId
     }
     $.ajax({
-        url: `/api/burgers/${burgerId}`,
+        url: `/api/burgers/`,
         method: 'PUT',
         data: data
       })

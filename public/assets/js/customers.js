@@ -1,9 +1,18 @@
 $(document).ready(function () {
 
-  $.fn.editable.defaults.ajaxOptions = {type: "PUT"}
-  $('#name').editable()
+  $.fn.editable.defaults.ajaxOptions = {
+    type: "PUT"
+  }
+  $('#name').editable({
+    params: function (params) { //params already contain `name`, `value` and `pk`
+      var data = {};
+      data['id'] = params.pk;
+      data[params.name] = params.value;
+      return data;
+    }
+  })
 
-  
+
   $('#newCustomerBtn').on('click', event => {
     event.preventDefault()
     let data = {
